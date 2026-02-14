@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>出勤簿アプリ</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="manifest" href="manifest.json">
+    <link rel="icon" href="icon-192.png">
+</head>
+
+<body>
+    <div class="container">
+        <h1>出勤簿</h1>
+
+        <div class="user-select">
+            <label class="radio-label">
+                <input type="radio" name="user" value="横澤" checked>
+                <span class="radio-text">横澤</span>
+            </label>
+            <label class="radio-label">
+                <input type="radio" name="user" value="鈴木">
+                <span class="radio-text">鈴木</span>
+            </label>
+        </div>
+
+        <div class="buttons">
+            <button id="btn-in" class="stamp-btn in">出勤</button>
+            <button id="btn-out" class="stamp-btn out">退勤</button>
+        </div>
+
+        <div id="status-message" class="message"></div>
+    </div>
+
+    <script src="app.js"></script>
+    <script>
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('sw.js')
+                .then(reg => console.log('SW registered!', reg))
+                .catch(err => console.log('SW registration failed: ', err));
+        }
+    </script>
+</body>
+
+</html>
